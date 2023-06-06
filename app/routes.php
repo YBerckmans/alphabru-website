@@ -21,9 +21,6 @@ return function (App $app) {
 		} else {
 			throw new \Slim\Exception\NotFoundException($request, $response);
 		}
-
-		/*$response->getBody()->write('Hello world!');
-        return $response;*/
     });
 
 	$app->post('/form', function(Request $request, Response $response) {
@@ -40,7 +37,6 @@ return function (App $app) {
 		){
 			$body->write(json_encode(['success' => false, "message" => "missing parameter"]));
 		} else {
-			//$body->write(sendMail($data, $this));
       try{
         if(($mail = sendMail($data, $this)) !== true){
   				$body->write(json_encode(['success' => false, "message" =>$mail->ErrorInfo]));
@@ -64,7 +60,7 @@ return function (App $app) {
 function sendMail($data, $self) {
 	$mail = new PHPMailer(true);
 	$mail->isSMTP();
-	$mail->SMTPDebug = 5;
+	$mail->SMTPDebug = 2;
 	$mail->Host       = $self->get('settings')['smtp_host'];
 	$mail->SMTPAuth   = true;
 	$mail->Username   = $self->get('settings')['smtp_username'];

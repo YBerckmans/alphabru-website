@@ -4,7 +4,7 @@ declare(strict_types=1);
 use DI\ContainerBuilder;
 use Monolog\Logger;
 
-(Dotenv\Dotenv::create(__DIR__.'\..'))->load();
+(Dotenv\Dotenv::create(__DIR__.'/..'))->load();
 
 return function (ContainerBuilder $containerBuilder) {
     // Global Settings Object
